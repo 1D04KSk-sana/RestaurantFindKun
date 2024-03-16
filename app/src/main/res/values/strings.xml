@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">RestaurantFindKun</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <!--  共通  -->
+    <string name="approval">了承</string>
+    <string name="denial">拒否</string>
+
+    <!--  ダイアログ  -->
+    <!--  権限必要性説明  -->
+    <string name="permission_explaination_title">権限が無いと以下の機能が制限されます</string>
+    <string name="permission_explaination_message">・位置情報を用いた検索\n・仮テキスト</string>
 </resources>

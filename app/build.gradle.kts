@@ -124,6 +124,9 @@ dependencies {
     //lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+
+    //permission
+
 }
 
 kapt {
