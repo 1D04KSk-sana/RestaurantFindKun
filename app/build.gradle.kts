@@ -45,7 +45,6 @@ android {
 }
 
 dependencies {
-
     val composeBom = platform("androidx.compose:compose-bom:2024.02.02")
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -86,4 +85,11 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata")
     // Optional - Integration with RxJava
     implementation("androidx.compose.runtime:runtime-rxjava2")
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose")
+
+    //hilt
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
+
 }
