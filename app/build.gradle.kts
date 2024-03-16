@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-
+    kotlin("kapt") version "1.9.0"
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -105,9 +106,16 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
     //hilt
+    //参考サイト：https://developer.android.com/training/dependency-injection/hilt-android?hl=ja
     implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     //lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+}
+
+kapt {
+    correctErrorTypes = true
 }
