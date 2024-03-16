@@ -11,7 +11,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor() : BaseViewModel() {
-    private val _currentDestination = MutableStateFlow<FindKunDestination>(FindKunDestination.Splash)
+    //あとでFindKunDestination.Splashに変える
+    private val _currentDestination = MutableStateFlow<FindKunDestination>(FindKunDestination.Main)
     val currentDestination: StateFlow<FindKunDestination> = _currentDestination
 
     fun setCurrentDestination(destination: FindKunDestination) {

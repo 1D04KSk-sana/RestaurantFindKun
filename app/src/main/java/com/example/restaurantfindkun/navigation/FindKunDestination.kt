@@ -8,5 +8,9 @@ sealed class FindKunDestination(
     //検索バーを出すか否かを判断するBool値
     val isShowSearchBar: Boolean
 ) {
+    //Splash画面
     object Splash : FindKunDestination("splash", null, false)
+
+    //Main画面
+    object Main : FindKunDestination("main", null, true)
 }
