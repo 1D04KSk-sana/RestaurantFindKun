@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
             FindKunApp(
                 currentDestinations = currentDestination,
                 onChangeDestination = {
-                    nextDestination -> mainViewModel.setCurrentDestination(nextDestination)
+                        nextDestination -> mainViewModel.setCurrentDestination(nextDestination)
                 }
             )
         }
