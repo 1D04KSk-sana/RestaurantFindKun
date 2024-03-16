@@ -46,6 +46,7 @@ android {
 dependencies {
     implementation(libs.androidx.benchmark.common)
     val nav_version = "2.7.7"
+    val lifecycle_version = "2.7.0"
 
     val composeBom = platform("androidx.compose:compose-bom:2024.02.02")
     implementation(composeBom)
@@ -106,4 +107,7 @@ dependencies {
     //hilt
     implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
+    //lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
 }

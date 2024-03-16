@@ -9,27 +9,59 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.rememberNavController
+import com.example.restaurantfindkun.navigation.FindKunDestination
+import com.example.restaurantfindkun.navigation.FindKunNavHost
+import com.example.restaurantfindkun.ui.theme.FindKunComposeTheme
+import com.example.restaurantfindkun.ui.theme.KariColor
+import com.example.restaurantfindkun.ui.theme.White
 import dagger.hilt.android.AndroidEntryPoint
 
+//
 //メイン画面　デザイン
+//
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val mainViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            RequestPermission()
+            val currentDestination by mainViewModel.currentDestination.collectAsStateWithLifecycle()
+
+            //RequestPermission()
+            FindKunApp(
+                currentDestinations = currentDestination,
+                onChangeDestination = {
+                    nextDestination -> mainViewModel.setCurrentDestination(nextDestination)
+                }
+            )
         }
     }
 }
 
+//
+//許可表示
+//
 @Composable
 private fun RequestPermission() {
     // LocalComposition より提供される Context を取得する
@@ -72,4 +104,47 @@ private fun String.isGrantedPermission(context: Context): Boolean {
     // checkSelfPermission は PERMISSION_GRANTED or PERMISSION_DENIED のどちらかを返す
     // そのため checkSelfPermission の戻り値が PERMISSION_GRANTED であれば許可済みになる。
     return context.checkSelfPermission(this) == PackageManager.PERMISSION_GRANTED
+}
+
+//
+//表示画面
+//
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FindKunApp(
+    currentDestinations: FindKunDestination,
+    onChangeDestination: (FindKunDestination) -> Unit
+) {
+    FindKunComposeTheme {
+        val navController = rememberNavController()
+
+        Scaffold(
+            topBar = {
+                currentDestinations.topBarTitle?.let {
+                    TopAppBar(
+                        navigationIcon = {
+//                            Icon(
+//                                painter = painterResource(R.drawable.icn_arrow_back),
+//                                contentDescription = "戻るボタン",
+//                                tint = White,
+//                            )
+                        },
+                        title = {
+                            Text(
+                                text = stringResource(id = it),
+                                color = White
+                            )
+                        },
+                        colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = KariColor)
+                    )
+                }
+            },
+        ) {
+            FindKunNavHost(
+                navController = navController,
+                onChangeDestination,
+                modifier = Modifier.padding(it)
+            )
+        }
+    }
 }
