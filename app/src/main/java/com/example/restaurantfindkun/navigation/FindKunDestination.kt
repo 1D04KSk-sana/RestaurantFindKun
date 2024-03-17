@@ -1,6 +1,7 @@
 package com.example.restaurantfindkun.navigation
 
 import androidx.annotation.StringRes
+import com.example.restaurantfindkun.R
 
 sealed class FindKunDestination(
     var route: String,
@@ -12,5 +13,6 @@ sealed class FindKunDestination(
     object Splash : FindKunDestination("splash", null, false)
 
     //Main画面
-    object Main : FindKunDestination("main", null, true)
+    object Main : FindKunDestination("main", R.string.RestaurantFindKun, true)
+
 }

@@ -6,6 +6,9 @@
     <string name="approval">了承</string>
     <string name="denial">拒否</string>
 
+    <!--  ページタイトル  -->
+    <string name="RestaurantFindKun">レストラン見つける君</string>
+
     <!--  ダイアログ  -->
     <!--  権限必要性説明  -->
     <string name="permission_explaination_title">権限が無いと以下の機能が制限されます</string>
