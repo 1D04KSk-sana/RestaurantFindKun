@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+
     kotlin("kapt") version "1.9.0"
     id("com.google.dagger.hilt.android")
 }
@@ -126,6 +127,7 @@ dependencies {
 
     //permission
 
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 }
 
 kapt {

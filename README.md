@@ -44,7 +44,11 @@
     - 画像に対してのModifier  
       - https://developer.android.com/jetpack/compose/modifiers?hl=ja  
 
-  + **Permission系**  
++ **現在位置系**  
+    - 現在位置取得のための開発者サービス使用  
+      - https://developers.google.com/android/guides/setup?hl=ja  
+
+    + **Permission系**  
     - 権限付与の大体の流れ  
       - https://akira-watson.com/android/kotlin/permission-request.html  
     - ContextCompat  

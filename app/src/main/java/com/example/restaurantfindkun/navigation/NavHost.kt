@@ -15,7 +15,7 @@ fun FindKunNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = FindKunDestination.Top.route,
+        startDestination = FindKunDestination.Top.route, //ココ本当はSplash
         modifier = Modifier
     ) {
         composable(route = FindKunDestination.Top.route) {
