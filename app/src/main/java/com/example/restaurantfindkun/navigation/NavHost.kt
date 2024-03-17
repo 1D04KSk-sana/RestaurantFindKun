@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.pecoricompose.screen.profile.MainScreen
+import com.example.restaurantfindkun.screen.top.TopScreen
 
 @Composable
 fun FindKunNavHost(
@@ -15,11 +15,11 @@ fun FindKunNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = FindKunDestination.Main.route,
+        startDestination = FindKunDestination.Top.route,
         modifier = Modifier
     ) {
-        composable(route = FindKunDestination.Main.route) {
-            MainScreen()
+        composable(route = FindKunDestination.Top.route) {
+            TopScreen()
         }
     }
 }

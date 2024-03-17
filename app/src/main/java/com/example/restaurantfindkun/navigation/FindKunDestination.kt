@@ -13,6 +13,6 @@ sealed class FindKunDestination(
     object Splash : FindKunDestination("splash", null, false)
 
     //Main画面
-    object Main : FindKunDestination("main", R.string.RestaurantFindKun, true)
+    object Top : FindKunDestination("top", R.string.RestaurantFindKun, true)
 
 }

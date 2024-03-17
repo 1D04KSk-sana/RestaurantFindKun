@@ -109,6 +109,6 @@ fun FindKunApp(
 @Preview(showBackground = true)
 @Composable
 fun FindKunAppPreview() {
-    FindKunApp(FindKunDestination.Main, {})
+    FindKunApp(FindKunDestination.Top, {})
 }
 
