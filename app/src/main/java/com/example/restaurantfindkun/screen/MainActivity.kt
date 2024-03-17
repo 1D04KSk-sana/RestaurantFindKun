@@ -1,13 +1,11 @@
 package com.example.restaurantfindkun.screen
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationManager
+import android.location.LocationRequest
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -38,6 +36,10 @@ import com.example.restaurantfindkun.navigation.FindKunNavHost
 import com.example.restaurantfindkun.ui.theme.FindKunComposeTheme
 import com.example.restaurantfindkun.ui.theme.KariColor
 import com.example.restaurantfindkun.ui.theme.White
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 
 //
@@ -47,6 +49,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     //権限リクエストするための変数
     private val requestPermissionLauncher = registerForActivityResult(
@@ -63,9 +66,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // FusedLocationProviderClientのインスタンスを取得して初期化
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         //前回が許可済みか拒否されたか確認
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             Log.d("Test", "許可済み")
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                // Got last known location. In some rare situations this can be null.
+                var latitude = 0.0
+                var longitude = 0.0
+
+                if (location != null) {
+                    latitude = location.latitude
+                    longitude = location.longitude
+                }
+
+                Log.d("Test", "$latitude, $longitude")
+            }
         } else {
             requestPermissionLauncher.launch(
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -83,6 +105,7 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
+
 }
 
 //
