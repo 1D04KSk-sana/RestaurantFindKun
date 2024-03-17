@@ -36,7 +36,11 @@
     - [x] 現在位置情報取得の準備（権限付与について、メッセージについて）  
     - ※感想：Kaptを記載し忘れてせいでアプリが起動できず数時間をどぶに捨てる。逆に言えば分からなかった問題を1日もたてずに解決させた。天才。  
 + **3/17**  
-    - [ ] 権限許可可能に  
+    - [x] 権限許可可能に  
+    - [x] 位置情報取得（可能であればリアルタイムで）  
+    - ※感想：位置情報をとる方法で右往左往した。LocationManagerが非推奨になった？とからしいが調べてもうまく理解できなかった。頑張れ。
++ **3/17**
+    - [ ] 
     - [ ] 位置情報取得（可能であればリアルタイムで）  
   
 # **〇参考にしたサイト様**  
@@ -44,11 +48,13 @@
     - 画像に対してのModifier  
       - https://developer.android.com/jetpack/compose/modifiers?hl=ja  
 
-  + **Permission系**  
+  + **地図系**  
     - 権限付与の大体の流れ  
       - https://akira-watson.com/android/kotlin/permission-request.html  
     - ContextCompat  
       - https://developer.android.com/reference/androidx/core/content/ContextCompat  
+    - 現在位置情報の取得
+      - https://developer.android.com/develop/sensors-and-location/location/retrieve-current?hl=ja 
 
   + **plugin系**  
     - Hilt、Kapt  
