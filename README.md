@@ -51,6 +51,8 @@
       - https://engawapg.net/jetpack-compose/893/display-image/
     - Card
       - https://developer.android.com/jetpack/compose/components/card?hl=ja
+    - Icon一覧
+      - https://fonts.google.com/icons
 
   + **地図系**  
     - 権限付与の大体の流れ  

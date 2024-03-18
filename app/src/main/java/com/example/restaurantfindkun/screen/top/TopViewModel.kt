@@ -32,4 +32,12 @@ sealed class SearchBarEvent {
 data class UiState(
     val query: String = "",
     val isQuerying: Boolean = false,
+    val historyTestList: List<String> = _history
+)
+
+private val _history = listOf(
+    "履歴1",
+    "履歴2",
+    "履歴3",
+    "履歴4"
 )

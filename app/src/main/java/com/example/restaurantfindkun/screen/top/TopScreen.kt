@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,14 +13,18 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.DockedSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restaurantfindkun.R
+import dagger.Lazy
 
 //
 //メイン画面
@@ -46,9 +52,10 @@ fun TopScreen(
     val listLazyListState = rememberLazyListState()
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier
-            .windowInsetsPadding(WindowInsets.statusBars)
-            .padding(top = 80.dp)
+        Box(
+            modifier = Modifier
+                .windowInsetsPadding(WindowInsets.statusBars)
+                .padding(top = 80.dp)
         ) {
             SearchBarContent(
                 modifier = Modifier
@@ -94,7 +101,7 @@ fun SearchBarContent(
 
     val query = uiState.query
     val isQuerying = uiState.isQuerying
-    val result: List<String> = listOf()
+    val result: List<String> = uiState.historyTestList
 
     DockedSearchBar(
         modifier = modifier,
@@ -105,13 +112,12 @@ fun SearchBarContent(
         onSearch = { active = false },
         active = active,
         onActiveChange = {
-            active = false
-            Log.d("Test", "この時にactive")
+            active = it
         },
         leadingIcon = {
             if (active) {
                 Icon(
-                    imageVector = Icons.Default.ArrowBack,
+                    imageVector = Icons.Default.ArrowBackIosNew,
                     contentDescription = "戻るボタン",
                     modifier = Modifier
                         .padding(start = 16.dp)
@@ -145,15 +151,36 @@ fun SearchBarContent(
         },
         placeholder = {
             Text(
-                text = stringResource(id = R.string.SearchBarText)
+                text = stringResource(id = R.string.searchBarText)
             )
         },
     ) {
         // Search result shown when active
         if (result.isNotEmpty()) {
             //検索結果があるときの行動
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                //検索結果のリスト
+                items(items = result) { history ->
+                    ListItem(
+                        headlineContent = { Text(text = history) },
+                        leadingContent = {
+                            Icon(
+                                imageVector = Icons.Default.History,
+                                contentDescription = "履歴アイコン"
+                            )
+                        },
+                    )
+                }
+            }
         } else {
             //検索結果がないときの行動
+            Text(
+                text = stringResource(id = R.string.searchBarNone)
+            )
         }
     }
 }
