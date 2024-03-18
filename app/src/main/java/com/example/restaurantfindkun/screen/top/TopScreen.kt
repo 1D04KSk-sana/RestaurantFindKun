@@ -1,6 +1,5 @@
 package com.example.restaurantfindkun.screen.top
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,7 +15,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.History
@@ -26,6 +24,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,7 +37,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restaurantfindkun.R
-import dagger.Lazy
 
 //
 //メイン画面
@@ -55,7 +53,7 @@ fun TopScreen(
         Box(
             modifier = Modifier
                 .windowInsetsPadding(WindowInsets.statusBars)
-                .padding(top = 80.dp)
+                .padding(top = 70.dp)
         ) {
             SearchBarContent(
                 modifier = Modifier
@@ -64,7 +62,6 @@ fun TopScreen(
                 uiState = uiState,
                 onEvent = viewModel::onEvent
             )
-
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
