@@ -40,3 +40,9 @@ val StorePositionText = TextStyle(
     fontWeight = FontWeight.Normal,
     fontSize = 9.sp,
 )
+
+val DropdownMenuText = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Normal,
+    fontSize = 14.sp,
+)

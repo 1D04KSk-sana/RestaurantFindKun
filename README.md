@@ -44,7 +44,7 @@
     - [ ] 検索画面作成
   
 # **〇参考にしたサイト様**  
-  + **JetpackCompose**  
+  + **Image系**  
     - 画像に対してのModifier  
       - https://developer.android.com/jetpack/compose/modifiers?hl=ja  
     - 画像の設定
@@ -53,6 +53,10 @@
       - https://developer.android.com/jetpack/compose/components/card?hl=ja
     - Icon一覧
       - https://fonts.google.com/icons
+
+  + **JetpackComposeのアイテム**
+    - 検索バー
+      - https://qiita.com/iwata_at/items/de6196779c6528c43058
 
   + **地図系**  
     - 権限付与の大体の流れ  
