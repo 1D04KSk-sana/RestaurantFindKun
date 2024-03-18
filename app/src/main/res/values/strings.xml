@@ -9,6 +9,9 @@
     <!--  ページタイトル  -->
     <string name="RestaurantFindKun">レストラン見つける君</string>
 
+    <!--  検索  -->
+    <string name="SearchBarText">条件を入力して検索してね</string>
+
     <!--  ダイアログ  -->
     <!--  権限必要性説明  -->
     <string name="permission_explaination_title">権限が無いと以下の機能が制限されます</string>
