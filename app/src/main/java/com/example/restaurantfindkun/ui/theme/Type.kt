@@ -41,7 +41,7 @@ val StorePositionText = TextStyle(
     fontSize = 9.sp,
 )
 
-val DropdownMenuText = TextStyle(
+val SearchText = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Normal,
     fontSize = 14.sp,
