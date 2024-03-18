@@ -73,6 +73,7 @@ dependencies {
     //Add import
     // Material Design 3
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material")
 
     // Android Studio Preview support
     implementation("androidx.compose.ui:ui-tooling-preview")
@@ -124,9 +125,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
 
-    //permission
-
+    //location
     implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
 }
 
 kapt {

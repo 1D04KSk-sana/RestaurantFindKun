@@ -35,6 +35,7 @@ import com.example.restaurantfindkun.navigation.FindKunDestination
 import com.example.restaurantfindkun.navigation.FindKunNavHost
 import com.example.restaurantfindkun.ui.theme.FindKunComposeTheme
 import com.example.restaurantfindkun.ui.theme.KariColor
+import com.example.restaurantfindkun.ui.theme.TitleText
 import com.example.restaurantfindkun.ui.theme.White
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -139,8 +140,8 @@ fun FindKunApp(
                         title = {
                             Text(
                                 text = stringResource(id = it),
-                                color = White,
-                                fontSize = 25.sp
+                                style = TitleText,
+                                color = White
                             )
                         },
                         colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = KariColor)

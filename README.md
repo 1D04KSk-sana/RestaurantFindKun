@@ -47,6 +47,8 @@
   + **JetpackCompose**  
     - 画像に対してのModifier  
       - https://developer.android.com/jetpack/compose/modifiers?hl=ja  
+    - 画像の設定
+      - https://engawapg.net/jetpack-compose/893/display-image/
 
   + **地図系**  
     - 権限付与の大体の流れ  
