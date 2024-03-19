@@ -120,6 +120,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
@@ -130,6 +131,10 @@ dependencies {
 
     //coil
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
 
 kapt {

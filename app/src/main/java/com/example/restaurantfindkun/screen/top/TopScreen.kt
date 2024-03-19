@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restaurantfindkun.R
@@ -46,8 +47,8 @@ import com.example.restaurantfindkun.screen.component.DropDownMenuContent
 //
 @Composable
 fun TopScreen(
+    viewModel: TopViewModel = hiltViewModel()
 ) {
-    val viewModel = viewModel<TopViewModel>()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var checkedBoolean = false
 
@@ -66,7 +67,8 @@ fun TopScreen(
                     .fillMaxWidth()
                     .padding(top = 12.dp, start = 16.dp, end = 16.dp),
                 uiState = uiState,
-                onEvent = viewModel::onEvent
+                onEvent = viewModel::onEvent,
+                onSearchEvent = { viewModel.executeReposLoad() }
             )
             DropDownMenuContent(
                 modifier = Modifier,
@@ -90,6 +92,7 @@ fun TopScreen(
 fun SearchBarContent(
     uiState: UiState,
     onEvent: (SearchBarEvent) -> Unit,
+    onSearchEvent: () -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -105,7 +108,10 @@ fun SearchBarContent(
         onQueryChange = {
             onEvent(SearchBarEvent.QueryChange(it))
         },
-        onSearch = { active = false },
+        onSearch = {
+            active = false
+            onSearchEvent()
+        },
         active = active,
         onActiveChange = {
             active = it
@@ -126,7 +132,9 @@ fun SearchBarContent(
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = "検索ボタン",
-                    modifier = Modifier.padding(start = 16.dp),
+                    modifier = Modifier
+                        .padding(start = 16.dp)
+                        .clickable { },
                 )
             }
         },
@@ -190,5 +198,5 @@ fun PreviewMainScreen() {
     val viewModel = viewModel<TopViewModel>()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    SearchBarContent(uiState, {})
+    SearchBarContent(uiState, {}, {})
 }
