@@ -3,7 +3,9 @@ package com.example.restaurantfindkun.screen.top
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.restaurantfindkun.data.api.RestaurantService
+import com.example.restaurantfindkun.data.api.response.RestaurantItemList
 import com.example.restaurantfindkun.screen.base.BaseViewModel
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,7 +24,7 @@ class TopViewModel @Inject constructor() : BaseViewModel() {
 
     companion object {
         private const val TAG = "MainActivity"
-        private const val BASE_URL = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/"
+        private const val BASE_URL = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/"
     }
 
     private val retrofit = Retrofit.Builder()
@@ -96,7 +98,8 @@ class TopViewModel @Inject constructor() : BaseViewModel() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.string()?.let { json ->
-                        Log.d(TAG, json)
+                        val restaurantList = Gson().fromJson(json, Array<RestaurantItemList>::class.java).toList()
+                        Log.d(TAG, restaurantList.toString())
                     }
                 } else {
                     val msg = "HTTP error. HTTP status code: ${response.code()}"
