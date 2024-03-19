@@ -40,13 +40,28 @@
     - [x] 位置情報取得（可能であればリアルタイムで）  
     - ※感想：位置情報をとる方法で右往左往した。LocationManagerが非推奨になった？とからしいが調べてもうまく理解できなかった。頑張れ。
 + **3/17**
-    - [ ] Component作成（パネル）
-    - [ ] 検索画面作成
+    - [x] Component作成（パネル）
+    - [x] 検索画面作成
+    - ※感想：とても楽しい……デザイン設定あっちゃこっちゃするのすごく楽しい……
   
 # **〇参考にしたサイト様**  
-  + **JetpackCompose**  
+  + **Image系**  
     - 画像に対してのModifier  
       - https://developer.android.com/jetpack/compose/modifiers?hl=ja  
+    - 画像の設定
+      - https://engawapg.net/jetpack-compose/893/display-image/
+    - Card
+      - https://developer.android.com/jetpack/compose/components/card?hl=ja
+    - Icon一覧
+      - https://fonts.google.com/icons
+
+  + **JetpackComposeのアイテム**
+    - 検索バー
+      - https://qiita.com/iwata_at/items/de6196779c6528c43058
+    - テキストフィールド
+      - https://stackoverflow.com/questions/67681416/jetpack-compose-decrease-height-of-textfield
+    - チェックボックス
+      - https://zenn.dev/joo_hashi/books/f646fb076f58dc/viewer/e6bc40
 
   + **地図系**  
     - 権限付与の大体の流れ  

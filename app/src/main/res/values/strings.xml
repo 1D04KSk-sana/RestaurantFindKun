@@ -7,7 +7,11 @@
     <string name="denial">拒否</string>
 
     <!--  ページタイトル  -->
-    <string name="RestaurantFindKun">レストラン見つける君</string>
+    <string name="restaurantFindKun">レストラン見つける君</string>
+
+    <!--  検索  -->
+    <string name="searchBarText">条件を入力して検索してね</string>
+    <string name="searchBarNone">検索結果がないよ</string>
 
     <!--  ダイアログ  -->
     <!--  権限必要性説明  -->
