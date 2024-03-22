@@ -3,7 +3,6 @@ package com.example.restaurantfindkun.screen
 import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationRequest
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -27,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
@@ -38,8 +36,6 @@ import com.example.restaurantfindkun.ui.theme.KariColor
 import com.example.restaurantfindkun.ui.theme.TitleText
 import com.example.restaurantfindkun.ui.theme.White
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 
