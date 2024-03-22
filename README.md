@@ -98,6 +98,10 @@
     - BuildConfig
         - https://takerpg.hatenablog.jp/entry/2023/04/22/210928
 
++ **Git系**
+    - mergeをロールバックする方法
+        - https://www.ipentec.com/document/git-rollback-push
+
 + **あああ**
     - アイコンの書き方
         - https://tech.mokelab.com/android/compose/composable/iconButton/display.html
