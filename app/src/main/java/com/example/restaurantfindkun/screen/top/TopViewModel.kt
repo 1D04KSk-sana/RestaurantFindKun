@@ -7,6 +7,7 @@ import com.example.restaurantfindkun.data.api.response.RestaurantItem
 import com.example.restaurantfindkun.data.api.response.RestaurantItemListResponse
 import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.base.BaseViewModel
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
