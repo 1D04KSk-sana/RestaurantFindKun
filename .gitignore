@@ -16,4 +16,4 @@ local.properties
 
 
 # Add
-gradle.properties
+/gradle.properties
