@@ -1,24 +1,11 @@
 package com.example.restaurantfindkun.screen.top
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.example.restaurantfindkun.data.api.RestaurantService
-import com.example.restaurantfindkun.data.api.response.RestaurantItem
-import com.example.restaurantfindkun.data.api.response.RestaurantItemListResponse
-import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.base.BaseViewModel
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 import javax.inject.Inject
 
 @HiltViewModel

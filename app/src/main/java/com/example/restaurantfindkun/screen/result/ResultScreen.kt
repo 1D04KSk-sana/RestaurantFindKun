@@ -12,7 +12,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.component.CardContent
-import com.example.restaurantfindkun.screen.top.TopViewModel
 
 @Composable
 fun ResultScreen(

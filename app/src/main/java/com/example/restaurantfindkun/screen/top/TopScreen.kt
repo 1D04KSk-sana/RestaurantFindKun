@@ -26,7 +26,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,11 +51,16 @@ fun TopScreen(
     modifier: Modifier = Modifier,
     moveNextScreen: () -> Unit
 ) {
+    //Remember：位置検索の可否選択
+    var positionBoolean by remember { mutableStateOf(true) }
+    //Remember：位置検索の範囲
+    var positionRange by remember { mutableStateOf(0) }
+
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var checkedBoolean = false
 
-    //ComboBox（DropDownMenu）用のテストデータ
-    val testItems = listOf("1", "2", "3", "4")
+    //ComboBox（DropDownMenu）用の現在位置からの検索範囲データ
+    val testItems = listOf("1", "2", "3", "4", "5")
     var selectedItem by remember { mutableStateOf(testItems.first()) }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -76,16 +80,21 @@ fun TopScreen(
                     moveNextScreen();
                 }
             )
+            CheckBoxContent(titleName = "現在位置空の範囲で検索する") { isChecked ->
+                checkedBoolean = !checkedBoolean
+                positionBoolean = checkedBoolean
+                Log.d("Test", positionBoolean.toString())
+            }
             DropDownMenuContent(
                 modifier = Modifier,
                 items = testItems,
                 selectedItem = selectedItem,
-                onItemSelected = { selectedItem = it }
+                onItemSelected = {
+                    selectedItem = it
+                    positionRange = selectedItem.toInt()
+                    Log.d("Test", positionRange.toString())
+                }
             )
-            CheckBoxContent(titleName = "ジャンル名") { isChecked ->
-                checkedBoolean = !checkedBoolean
-                Log.d("Test", checkedBoolean.toString())
-            }
         }
     }
 }

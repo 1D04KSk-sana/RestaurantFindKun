@@ -71,6 +71,8 @@
         - https://stackoverflow.com/questions/67681416/jetpack-compose-decrease-height-of-textfield
     - チェックボックス
         - https://zenn.dev/joo_hashi/books/f646fb076f58dc/viewer/e6bc40
+    - Remember
+        - https://zenn.dev/kaleidot725/articles/2021-11-13-jc-remember-remembersaveable
 
 + **API系**
     - APIを隠す方法
