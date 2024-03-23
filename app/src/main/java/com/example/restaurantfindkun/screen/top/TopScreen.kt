@@ -48,7 +48,9 @@ import com.example.restaurantfindkun.screen.component.DropDownMenuContent
 //
 @Composable
 fun TopScreen(
-    viewModel: TopViewModel = hiltViewModel()
+    viewModel: TopViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
+    moveNextScreen: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var checkedBoolean = false
@@ -69,7 +71,10 @@ fun TopScreen(
                     .padding(top = 12.dp, start = 16.dp, end = 16.dp),
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
-                onSearchEvent = { viewModel.executeReposLoad() }
+                onSearchEvent = {
+//                  viewModel.executeReposLoad()
+                    moveNextScreen();
+                }
             )
             DropDownMenuContent(
                 modifier = Modifier,

@@ -26,61 +26,6 @@ class TopViewModel @Inject constructor() : BaseViewModel() {
     private val _uiState = MutableStateFlow(UiState())
     val uiState = _uiState.asStateFlow()
 
-    companion object {
-        private const val TAG = "MainActivity"
-        private const val BASE_URL = "https://webservice.recruit.co.jp/hotpepper/"
-    }
-
-    private val _apiList = MutableStateFlow<List<Shop>>(emptyList())
-    val apiList: StateFlow<List<Shop>> = _apiList
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(SimpleXmlConverterFactory.create()) // XML converterを追加
-        .build()
-
-    private val service = retrofit.create(RestaurantService::class.java)
-
-    fun executeReposLoad() {
-        val call = service.loadRepos()
-        val requestUrl = call.request().url.toString() // リクエストのURLを取得
-
-        Log.d(TAG, "Request URL: $requestUrl") // リクエストのURLをログに表示
-
-        call.enqueue(object : Callback<RestaurantItemListResponse> {
-            override fun onResponse(
-                call: Call<RestaurantItemListResponse>,
-                response: Response<RestaurantItemListResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val restaurantItemListResponse = response.body()
-                    // レスポンスを適切に処理する
-                    restaurantItemListResponse?.let { response ->
-                        val shops = response.shops
-                        shops?.forEach { shop ->
-                            // ここで取得したデータを適切に処理する
-                            println("Shop Name: ${shop.name}")
-                            println("Shop Address: ${shop.address}")
-                            // 必要に応じて他のデータも処理する
-                        }
-                        println("Total Shops: ${shops?.size}")
-                    }
-                } else {
-                    val msg = "HTTP error. HTTP status code: ${response.code()}"
-                    println("$TAG: $msg")
-                }
-            }
-
-            override fun onFailure(
-                call: Call<RestaurantItemListResponse>,
-                t: Throwable
-            ) {
-                println("$TAG: Failed to fetch data")
-                t.printStackTrace()
-            }
-        })
-    }
-
     fun onEvent(event: SearchBarEvent) {
         when (event) {
             //テキストが変更されたときのイベント
