@@ -10,22 +10,30 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CreditCard
+import androidx.compose.material.icons.filled.CreditCardOff
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.restaurantfindkun.ui.theme.Black
+import com.example.restaurantfindkun.ui.theme.Gray
+import com.example.restaurantfindkun.ui.theme.KariColor
+import com.example.restaurantfindkun.ui.theme.Pink
 import com.example.restaurantfindkun.ui.theme.StoreCatchText
 import com.example.restaurantfindkun.ui.theme.StoreNameText
 import com.example.restaurantfindkun.ui.theme.StorePositionText
@@ -75,9 +83,12 @@ fun CardContent(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
+                        modifier = Modifier.width(250.dp),
                         text = storeName,
                         style = StoreNameText,
-                        color = Black
+                        color = Black,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                     Icon(
                         modifier = Modifier
@@ -105,15 +116,57 @@ fun CardContent(
     }
 }
 
+@Composable
+fun CardDetails(
+    okBoolean: Boolean,
+    detailIcon: ImageVector,
+    detailNGIcon: ImageVector,
+    detailText: String,
+) {
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+        modifier = Modifier
+            .size(height = 100.dp, width = 130.dp)
+            .fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text = detailText,
+                style = StoreNameText,
+                color = if (okBoolean) Pink else Gray
+            )
+            Icon(
+                modifier = Modifier
+                    .size(65.dp)
+                    .fillMaxSize(),
+                imageVector = if (okBoolean) detailIcon else detailNGIcon,
+                contentDescription = "各カードの詳細をあらわすアイコン",
+                tint = if (okBoolean) Pink else Gray
+            )
+        }
+    }
+}
 
 @Preview
 @Composable
 fun PreviewCardContent() {
-    CardContent(
-        "https://1.bp.blogspot.com/-ZOg0qAG4ewU/Xub_uw6q0DI/AAAAAAABZio/MshyuVBpHUgaOKJtL47LmVkCf5Vge6MQQCNcBGAsYHQ/s1600/pose_pien_uruuru_woman.png",
-        "店舗名",
-        "土地の名前",
-        "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
-        {}
+//    CardContent(
+//        "https://imgfp.hotp.jp/IMGH/01/36/P036040136/P036040136_69.jpg",
+//        "店舗名舗店名舗店名舗店名舗店名舗店名",
+//        "土地の名前",
+//        "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+//        {}
+//    )
+    CardDetails(
+        okBoolean = true,
+        detailIcon = Icons.Default.CreditCard,
+        detailNGIcon = Icons.Default.CreditCardOff,
+        detailText = "カード"
     )
 }

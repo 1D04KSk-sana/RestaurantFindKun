@@ -11,5 +11,8 @@ var White = Color(0xFFFFFFFF)
 val Black = Color(0xFF050101)
 val Gray = Color(0xFFAFAFAF)
 
+//詳細カード
+val Pink = Color(0xFFFF268B)
+
 //テスト用
 var KariColor = Color(0xFF2196F3)

@@ -35,12 +35,13 @@ class ResultViewModel @Inject constructor() : BaseViewModel()  {
     private val service = retrofit.create(RestaurantService::class.java)
 
     fun executeReposLoad(
-        latitude: String,
-        longitude: String,
-        range: String
+        id: String?,
+        latitude: String?,
+        longitude: String?,
+        range: String?
     ) {
         Log.d("Test result", CompanionObject.positionLatitude)
-        val call = service.loadRepos(BuildConfig.API_KEY, null, latitude, longitude, range)
+        val call = service.loadRepos(BuildConfig.API_KEY, id,null, latitude, longitude, range)
         val requestUrl = call.request().url.toString() // リクエストのURLを取得
 
         Log.d(TAG, "Request URL: $requestUrl") // リクエストのURLをログに表示

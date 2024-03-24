@@ -46,3 +46,9 @@ val SearchText = TextStyle(
     fontWeight = FontWeight.Normal,
     fontSize = 14.sp,
 )
+
+val DetailStoreNameText = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Normal,
+    fontSize = 30.sp,
+)

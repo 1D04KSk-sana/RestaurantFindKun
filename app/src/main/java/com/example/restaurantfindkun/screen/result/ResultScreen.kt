@@ -29,7 +29,12 @@ fun ResultScreen(
 ) {
     val listApi by viewModel.apiList.collectAsStateWithLifecycle()
 
-    viewModel.executeReposLoad(CompanionObject.positionLatitude, CompanionObject.positionLongitude, CompanionObject.positionRange)
+    viewModel.executeReposLoad(
+        id = null,
+        latitude = CompanionObject.positionLatitude,
+        longitude = CompanionObject.positionLongitude,
+        range = CompanionObject.positionRange
+    )
 
     ListSet(
         list = listApi,
@@ -52,11 +57,8 @@ fun ListSet(
         modifier = Modifier.padding(top = 70.dp)
     ) {
         list.forEach { api ->
-            var catchTextString: String = ""
+            var catchTextString: String = api.catchText ?: ""
 
-            if (api.catchText != null) {
-                catchTextString = api.catchText!!
-            }
             item {
                 CardContent(
                     imageLink = api.logoImage!!,
