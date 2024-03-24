@@ -55,7 +55,16 @@ fun FindKunNavHost(
         }
 
         composable(route = FindKunDestination.Detail.route) {
-            DetailScreen()
+            DetailScreen(
+                modifier = modifier,
+                moveNextScreen = {
+                    navController.navigate(FindKunDestination.Map.route) {
+                        onChangeDestination(FindKunDestination.Map)
+                        popUpTo(FindKunDestination.Detail.route) {
+                            inclusive = true
+                        }
+                    }
+                })
         }
     }
 }
