@@ -1,5 +1,6 @@
 package com.example.restaurantfindkun.screen.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,13 +40,15 @@ fun CardContent(
     imageLink: String,
     storeName: String,
     storePosition: String,
-    storeCatch: String
+    storeCatch: String,
+    onClicked: () -> Unit
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         modifier = Modifier
+            .clickable(onClick = onClicked)
             .defaultMinSize(minHeight = 100.dp)
             .fillMaxWidth()
     ) {
@@ -110,6 +113,7 @@ fun PreviewCardContent() {
         "https://1.bp.blogspot.com/-ZOg0qAG4ewU/Xub_uw6q0DI/AAAAAAABZio/MshyuVBpHUgaOKJtL47LmVkCf5Vge6MQQCNcBGAsYHQ/s1600/pose_pien_uruuru_woman.png",
         "店舗名",
         "土地の名前",
-        "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
+        "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+        {}
     )
 }

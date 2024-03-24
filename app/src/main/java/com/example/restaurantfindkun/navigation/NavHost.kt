@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.restaurantfindkun.screen.detail.DetailScreen
 import com.example.restaurantfindkun.screen.result.ResultScreen
 import com.example.restaurantfindkun.screen.top.TopScreen
 
@@ -40,7 +41,21 @@ fun FindKunNavHost(
 
         //検索結果
         composable(route = FindKunDestination.Result.route) {
-            ResultScreen()
+            ResultScreen(
+                modifier = modifier,
+                moveNextScreen = {
+                    navController.navigate(FindKunDestination.Detail.route) {
+                        onChangeDestination(FindKunDestination.Detail)
+                        popUpTo(FindKunDestination.Result.route) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable(route = FindKunDestination.Detail.route) {
+            DetailScreen()
         }
     }
 }

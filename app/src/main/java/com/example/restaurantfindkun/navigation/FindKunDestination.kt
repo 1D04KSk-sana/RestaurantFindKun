@@ -17,4 +17,7 @@ sealed class FindKunDestination(
 
     //検索結果画面
     object  Result : FindKunDestination("result", R.string.resultFindKum, false)
+
+    //レストラン詳細画面
+    object  Detail : FindKunDestination("detail", R.string.detailFindKum, false)
 }

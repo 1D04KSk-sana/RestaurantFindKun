@@ -22,19 +22,25 @@ import com.example.restaurantfindkun.screen.top.TopViewModel
 
 @Composable
 fun ResultScreen(
-    viewModel: ResultViewModel = hiltViewModel()
+    viewModel: ResultViewModel = hiltViewModel(),
+    modifier: Modifier,
+    moveNextScreen: () -> Unit
 ) {
     val listApi by viewModel.apiList.collectAsStateWithLifecycle()
 
     viewModel.executeReposLoad()
 
-    ListSet(list = listApi)
+    ListSet(
+        list = listApi,
+        moveScreen = moveNextScreen
+    )
 //    Log.d("Test", "")
 }
 
 @Composable
 fun ListSet(
-    list: List<Shop>
+    list: List<Shop>,
+    moveScreen: () -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(
@@ -55,7 +61,8 @@ fun ListSet(
                     imageLink = api.logoImage!!,
                     storeName = api.name!!,
                     storePosition = api.smallArea!!.name!!,
-                    storeCatch = catchTextString
+                    storeCatch = catchTextString,
+                    onClicked = moveScreen
                 )
             }
         }

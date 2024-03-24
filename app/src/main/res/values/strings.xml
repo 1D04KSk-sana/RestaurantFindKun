@@ -8,7 +8,8 @@
 
     <!--  ページタイトル  -->
     <string name="restaurantFindKun">レストラン見つける君</string>
-    <string name="resultFindKum">レストラン見つける君</string>
+    <string name="resultFindKum">レストラン結果君</string>
+    <string name="detailFindKum">レストラン詳細君</string>
 
     <!--  検索  -->
     <string name="searchBarText">条件を入力して検索してね</string>
