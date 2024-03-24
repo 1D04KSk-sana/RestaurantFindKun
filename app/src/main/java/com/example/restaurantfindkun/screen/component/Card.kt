@@ -128,8 +128,9 @@ fun CardDetails(
             defaultElevation = 6.dp
         ),
         modifier = Modifier
-            .size(height = 100.dp, width = 130.dp)
+            .size(height = 100.dp, width = 120.dp)
             .fillMaxSize()
+            .padding(5.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),

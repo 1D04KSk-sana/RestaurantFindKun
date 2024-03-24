@@ -1,6 +1,5 @@
 package com.example.restaurantfindkun.screen.detail
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +13,13 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CarCrash
+import androidx.compose.material.icons.filled.CreditCard
+import androidx.compose.material.icons.filled.CreditCardOff
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.NoCrash
+import androidx.compose.material.icons.filled.Wifi
+import androidx.compose.material.icons.filled.WifiOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,12 +32,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.example.restaurantfindkun.screen.component.CardDetails
 import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.result.ResultViewModel
 import com.example.restaurantfindkun.ui.theme.Black
 import com.example.restaurantfindkun.ui.theme.DetailStoreNameText
 import com.example.restaurantfindkun.ui.theme.StoreCatchText
-import com.example.restaurantfindkun.ui.theme.StoreNameText
 
 @Composable
 fun DetailScreen(
@@ -52,6 +57,9 @@ fun DetailScreen(
     var openTimeString = ""
     var closeTimeString = ""
     var accessString = ""
+    var cardBoolean = false
+    var wifiBoolean = false
+    var parkingBoolean = false
 
     listApi.forEach { api ->
         imageLinkString = api.photo?.mobile?.l ?: ""
@@ -59,6 +67,9 @@ fun DetailScreen(
         openTimeString = api.open ?: ""
         closeTimeString = api.close ?: ""
         accessString = api.mobileAccess ?: ""
+        cardBoolean = api.card == "利用可"
+        wifiBoolean = api.wifi == "あり"
+        parkingBoolean = api.parking!!.startsWith("あり")
     }
 
     DetailContent(
@@ -66,7 +77,10 @@ fun DetailScreen(
         storeName = storeNameString,
         openTime = openTimeString,
         closeTime = closeTimeString,
-        access = accessString
+        access = accessString,
+        card = cardBoolean,
+        wifi = wifiBoolean,
+        parking = parkingBoolean
     )
 }
 
@@ -77,7 +91,9 @@ fun DetailContent(
     openTime: String,
     closeTime: String,
     access: String,
-
+    card: Boolean,
+    wifi: Boolean,
+    parking: Boolean
     ) {
     Column(
         modifier = Modifier
@@ -137,9 +153,29 @@ fun DetailContent(
                 color = Black
             )
             Row(
-                modifier = Modifier.padding(top = 5.dp)
+                modifier = Modifier
+                    .padding(top = 5.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-
+                CardDetails(
+                    okBoolean = card,
+                    detailIcon = Icons.Default.CreditCard,
+                    detailNGIcon = Icons.Default.CreditCardOff,
+                    detailText = "カード"
+                )
+                CardDetails(
+                    okBoolean = wifi,
+                    detailIcon = Icons.Default.Wifi,
+                    detailNGIcon = Icons.Default.WifiOff,
+                    detailText = "Wifi"
+                )
+                CardDetails(
+                    okBoolean = parking,
+                    detailIcon = Icons.Default.NoCrash,
+                    detailNGIcon = Icons.Default.CarCrash,
+                    detailText = "駐車場"
+                )
             }
         }
     }
@@ -154,6 +190,9 @@ fun PreviewDetailContent() {
         storeName = "舗店名舗店名舗店名舗店名舗店名舗店名舗店名舗店名舗店名舗店名",
         openTime = "月～木、土、日、祝日: 16:00～23:00 （料理L.O. 22:30 ドリンクL.O. 22:45）金、祝前日: 16:00～翌5:00 （料理L.O. 翌4:30 ドリンクL.O. 翌4:45）",
         closeTime = "【年中無休で営業中】団体様用個室やフロア貸切のご予約受付中！",
-        access = "JR五反田駅東口 徒歩1分/宴会向けｺｰｽ3500円～"
+        access = "JR五反田駅東口 徒歩1分/宴会向けｺｰｽ3500円～",
+        card = true,
+        wifi = false,
+        parking = true
     )
 }
