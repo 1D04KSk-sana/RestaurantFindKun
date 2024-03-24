@@ -10,6 +10,10 @@ interface RestaurantService {
     @GET("gourmet/v1/")
     fun loadRepos(
         @Query("key") key: String = "918c39bfebeeacb6",
-        @Query("large_area") largeArea: String = "Z011",
+        @Query("large_area") largeArea: String?,
+        @Query("lat") latitude: String?,
+        @Query("lng") longitude: String?,
+        @Query("range") range: String?,
+        @Query("order") order: String = "4"
     ): Call<RestaurantItemListResponse>
 }

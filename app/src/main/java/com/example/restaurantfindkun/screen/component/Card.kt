@@ -39,7 +39,7 @@ fun CardContent(
     imageLink: String,
     storeName: String,
     storePosition: String,
-    storeCatch: String
+//    storeCatch: String
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -90,13 +90,13 @@ fun CardContent(
                     style = StorePositionText,
                     color = Black
                 )
-                Text(
-                    text = storeCatch,
-                    style = StoreCatchText,
-                    color = Black,
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis
-                )
+//                Text(
+//                    text = storeCatch,
+//                    style = StoreCatchText,
+//                    color = Black,
+//                    maxLines = 3,
+//                    overflow = TextOverflow.Ellipsis
+//                )
             }
         }
     }
@@ -110,6 +110,6 @@ fun PreviewCardContent() {
         "https://1.bp.blogspot.com/-ZOg0qAG4ewU/Xub_uw6q0DI/AAAAAAABZio/MshyuVBpHUgaOKJtL47LmVkCf5Vge6MQQCNcBGAsYHQ/s1600/pose_pien_uruuru_woman.png",
         "店舗名",
         "土地の名前",
-        "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
+//        "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
     )
 }

@@ -1,10 +1,19 @@
 package com.example.restaurantfindkun.screen.result
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Location
 import android.util.Log
+import androidx.core.content.ContextCompat
+import com.example.restaurantfindkun.BuildConfig
 import com.example.restaurantfindkun.data.api.RestaurantService
 import com.example.restaurantfindkun.data.api.response.RestaurantItemListResponse
 import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.base.BaseViewModel
+import com.example.restaurantfindkun.screen.component.CompanionObject
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,7 +42,8 @@ class ResultViewModel @Inject constructor() : BaseViewModel()  {
     private val service = retrofit.create(RestaurantService::class.java)
 
     fun executeReposLoad() {
-        val call = service.loadRepos()
+        Log.d("Test result", CompanionObject.topPositionLatitude)
+        val call = service.loadRepos(BuildConfig.API_KEY, null, CompanionObject.topPositionLatitude, CompanionObject.topPositionLongitude, CompanionObject.topPositionRange)
         val requestUrl = call.request().url.toString() // リクエストのURLを取得
 
         Log.d(TAG, "Request URL: $requestUrl") // リクエストのURLをログに表示
@@ -74,5 +84,4 @@ class ResultViewModel @Inject constructor() : BaseViewModel()  {
             }
         })
     }
-
 }

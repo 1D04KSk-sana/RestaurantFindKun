@@ -32,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,6 +41,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restaurantfindkun.R
 import com.example.restaurantfindkun.screen.component.CheckBoxContent
+import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.component.DropDownMenuContent
 
 //
@@ -51,17 +53,14 @@ fun TopScreen(
     modifier: Modifier = Modifier,
     moveNextScreen: () -> Unit
 ) {
-    //Remember：位置検索の可否選択
-    var positionBoolean by remember { mutableStateOf(true) }
-    //Remember：位置検索の範囲
-    var positionRange by remember { mutableStateOf(0) }
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var checkedBoolean = false
 
     //ComboBox（DropDownMenu）用の現在位置からの検索範囲データ
     val testItems = listOf("1", "2", "3", "4", "5")
     var selectedItem by remember { mutableStateOf(testItems.first()) }
+
+    viewModel.getLocation(LocalContext.current)
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -76,14 +75,12 @@ fun TopScreen(
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
                 onSearchEvent = {
-//                  viewModel.executeReposLoad()
                     moveNextScreen();
                 }
             )
             CheckBoxContent(titleName = "現在位置空の範囲で検索する") { isChecked ->
                 checkedBoolean = !checkedBoolean
-                positionBoolean = checkedBoolean
-                Log.d("Test", positionBoolean.toString())
+                Log.d("Test", checkedBoolean.toString())
             }
             DropDownMenuContent(
                 modifier = Modifier,
@@ -91,8 +88,7 @@ fun TopScreen(
                 selectedItem = selectedItem,
                 onItemSelected = {
                     selectedItem = it
-                    positionRange = selectedItem.toInt()
-                    Log.d("Test", positionRange.toString())
+                    CompanionObject.topPositionRange = selectedItem
                 }
             )
         }

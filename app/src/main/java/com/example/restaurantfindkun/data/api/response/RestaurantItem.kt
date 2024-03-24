@@ -176,123 +176,123 @@ data class Shop(
 
 @Root(name = "large_service_area", strict = false)
 data class LargeServiceArea(
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null,
 
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null
 )
 
 @Root(name = "service_area", strict = false)
 data class ServiceArea(
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null,
 
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null
 )
 
 @Root(name = "large_area", strict = false)
 data class LargeArea(
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null,
 
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null
 )
 
 @Root(name = "middle_area", strict = false)
 data class MiddleArea(
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null,
 
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null
 )
 
 @Root(name = "small_area", strict = false)
 data class SmallArea(
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null,
 
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null
 )
 
 @Root(name = "genre", strict = false)
 data class Genre(
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null,
 
-    @field:Element(name = "catch")
+    @field:Element(name = "catch", required = false)
     var catchText: String? = null,
 
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null
 )
 
 @Root(name = "sub_genre", strict = false)
 data class SubGenre(
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null,
 
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null
 )
 
 @Root(name = "budget", strict = false)
 data class Budget(
-    @field:Element(name = "code")
+    @field:Element(name = "code", required = false)
     var code: String? = null,
 
-    @field:Element(name = "name")
+    @field:Element(name = "name", required = false)
     var name: String? = null,
 
-    @field:Element(name = "average")
+    @field:Element(name = "average", required = false)
     var average: String? = null
 )
 
 @Root(name = "urls", strict = false)
 data class Urls(
-    @field:Element(name = "pc")
+    @field:Element(name = "pc", required = false)
     var pc: String? = null
 )
 
 @Root(name = "photo", strict = false)
 data class Photo(
-    @field:Element(name = "pc")
+    @field:Element(name = "pc", required = false)
     var pc: PcPhoto? = null,
 
-    @field:Element(name = "mobile")
+    @field:Element(name = "mobile", required = false)
     var mobile: MobilePhoto? = null
 )
 
 @Root(name = "pc", strict = false)
 data class PcPhoto(
-    @field:Element(name = "l")
+    @field:Element(name = "l", required = false)
     var l: String? = null,
 
-    @field:Element(name = "m")
+    @field:Element(name = "m", required = false)
     var m: String? = null,
 
-    @field:Element(name = "s")
+    @field:Element(name = "s", required = false)
     var s: String? = null
 )
 
 @Root(name = "mobile", strict = false)
 data class MobilePhoto(
-    @field:Element(name = "l")
+    @field:Element(name = "l", required = false)
     var l: String? = null,
 
-    @field:Element(name = "s")
+    @field:Element(name = "s", required = false)
     var s: String? = null
 )
 
 @Root(name = "coupon_urls", strict = false)
 data class CouponUrls(
-    @field:Element(name = "pc")
+    @field:Element(name = "pc", required = false)
     var pc: String? = null,
 
-    @field:Element(name = "sp")
+    @field:Element(name = "sp", required = false)
     var sp: String? = null
 )

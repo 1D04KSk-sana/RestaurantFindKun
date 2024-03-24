@@ -72,7 +72,6 @@ class MainActivity : ComponentActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            Log.d("Test", "許可済み")
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
                 var latitude = 0.0
@@ -102,7 +101,6 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
-
 }
 
 //
@@ -160,6 +158,6 @@ fun FindKunApp(
 @Preview(showBackground = true)
 @Composable
 fun FindKunAppPreview() {
-    FindKunApp(FindKunDestination.Top, {})
+//    FindKunApp(FindKunDestination.Top, {}, Context)
 }
 
