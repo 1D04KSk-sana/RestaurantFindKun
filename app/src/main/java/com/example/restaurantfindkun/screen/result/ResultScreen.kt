@@ -45,12 +45,17 @@ fun ListSet(
         modifier = Modifier.padding(top = 70.dp)
     ) {
         list.forEach { api ->
+            var catchTextString: String = ""
+
+            if (api.catchText != null) {
+                catchTextString = api.catchText!!
+            }
             item {
                 CardContent(
                     imageLink = api.logoImage!!,
                     storeName = api.name!!,
                     storePosition = api.smallArea!!.name!!,
-//                    storeCatch = api.catchText!!
+                    storeCatch = catchTextString
                 )
             }
         }

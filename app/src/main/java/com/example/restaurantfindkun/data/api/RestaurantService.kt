@@ -14,6 +14,5 @@ interface RestaurantService {
         @Query("lat") latitude: String?,
         @Query("lng") longitude: String?,
         @Query("range") range: String?,
-        @Query("order") order: String = "4"
     ): Call<RestaurantItemListResponse>
 }
