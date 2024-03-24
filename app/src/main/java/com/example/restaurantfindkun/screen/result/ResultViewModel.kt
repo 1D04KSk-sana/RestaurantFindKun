@@ -1,19 +1,12 @@
 package com.example.restaurantfindkun.screen.result
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import android.location.Location
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.example.restaurantfindkun.BuildConfig
 import com.example.restaurantfindkun.data.api.RestaurantService
 import com.example.restaurantfindkun.data.api.response.RestaurantItemListResponse
 import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.base.BaseViewModel
 import com.example.restaurantfindkun.screen.component.CompanionObject
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -41,9 +34,13 @@ class ResultViewModel @Inject constructor() : BaseViewModel()  {
 
     private val service = retrofit.create(RestaurantService::class.java)
 
-    fun executeReposLoad() {
-        Log.d("Test result", CompanionObject.topPositionLatitude)
-        val call = service.loadRepos(BuildConfig.API_KEY, null, CompanionObject.topPositionLatitude, CompanionObject.topPositionLongitude, CompanionObject.topPositionRange)
+    fun executeReposLoad(
+        latitude: String,
+        longitude: String,
+        range: String
+    ) {
+        Log.d("Test result", CompanionObject.positionLatitude)
+        val call = service.loadRepos(BuildConfig.API_KEY, null, latitude, longitude, range)
         val requestUrl = call.request().url.toString() // リクエストのURLを取得
 
         Log.d(TAG, "Request URL: $requestUrl") // リクエストのURLをログに表示
@@ -61,8 +58,6 @@ class ResultViewModel @Inject constructor() : BaseViewModel()  {
                         val shops = response.shops
                         shops?.forEach { shop ->
                             // ここで取得したデータを適切に処理する
-                            println("Shop Name: ${shop.name}")
-                            println("Shop Address: ${shop.address}")
                             // 必要に応じて他のデータも処理する
                             shopList.add(shop)
                         }

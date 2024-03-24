@@ -18,6 +18,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.MainActivity
 import com.example.restaurantfindkun.screen.component.CardContent
+import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.top.TopViewModel
 
 @Composable
@@ -28,7 +29,7 @@ fun ResultScreen(
 ) {
     val listApi by viewModel.apiList.collectAsStateWithLifecycle()
 
-    viewModel.executeReposLoad()
+    viewModel.executeReposLoad(CompanionObject.positionLatitude, CompanionObject.positionLongitude, CompanionObject.positionRange)
 
     ListSet(
         list = listApi,
@@ -62,7 +63,10 @@ fun ListSet(
                     storeName = api.name!!,
                     storePosition = api.smallArea!!.name!!,
                     storeCatch = catchTextString,
-                    onClicked = moveScreen
+                    onClicked = {
+                        moveScreen()
+                        CompanionObject.shopID = api.id!!
+                    }
                 )
             }
         }

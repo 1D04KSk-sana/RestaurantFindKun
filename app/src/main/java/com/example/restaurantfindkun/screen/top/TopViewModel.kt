@@ -5,17 +5,14 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.util.Log
-import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewModelScope
-import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.base.BaseViewModel
 import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -95,13 +92,13 @@ class TopViewModel @Inject constructor() : BaseViewModel() {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
-                    CompanionObject.topPositionLatitude = location.latitude.toString()
-                    CompanionObject.topPositionLongitude = location.longitude.toString()
+                    CompanionObject.positionLatitude = location.latitude.toString()
+                    CompanionObject.positionLongitude = location.longitude.toString()
                 }
 
                 Log.d(
                     "Test",
-                    "${CompanionObject.topPositionLatitude}, ${CompanionObject.topPositionLongitude}"
+                    "${CompanionObject.positionLatitude}, ${CompanionObject.positionLongitude}"
                 )
             }
         } else {

@@ -2,8 +2,9 @@ package com.example.restaurantfindkun.screen.component
 
 class CompanionObject {
     companion object{
-        var topPositionLatitude: String = "nullだよ"
-        var topPositionLongitude: String = ""
-        var topPositionRange: String = "2"
+        var shopID: String = "J001027771"
+        var positionLatitude: String = ""
+        var positionLongitude: String = ""
+        var positionRange: String = "2"
     }
 }

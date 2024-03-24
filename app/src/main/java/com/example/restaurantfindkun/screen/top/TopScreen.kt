@@ -88,7 +88,7 @@ fun TopScreen(
                 selectedItem = selectedItem,
                 onItemSelected = {
                     selectedItem = it
-                    CompanionObject.topPositionRange = selectedItem
+                    CompanionObject.positionRange = selectedItem
                 }
             )
         }
