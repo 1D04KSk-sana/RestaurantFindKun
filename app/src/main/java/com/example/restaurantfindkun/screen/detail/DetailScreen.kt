@@ -39,6 +39,9 @@ import com.example.restaurantfindkun.ui.theme.Black
 import com.example.restaurantfindkun.ui.theme.DetailStoreNameText
 import com.example.restaurantfindkun.ui.theme.StoreCatchText
 
+//
+//詳細画面
+//
 @Composable
 fun DetailScreen(
     resultViewModel: ResultViewModel = hiltViewModel(),
@@ -86,6 +89,9 @@ fun DetailScreen(
     )
 }
 
+//
+//詳細画面内容
+//
 @Composable
 fun DetailContent(
     imageLink: String,
@@ -184,6 +190,9 @@ fun DetailContent(
 
 }
 
+//
+//プレビュー：詳細画面
+//
 @Preview(showBackground = true)
 @Composable
 fun PreviewDetailContent() {

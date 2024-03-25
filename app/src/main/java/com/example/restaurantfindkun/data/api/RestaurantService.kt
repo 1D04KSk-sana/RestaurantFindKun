@@ -5,6 +5,9 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+//
+//APIで動かすときに使う
+//
 interface RestaurantService {
     @GET("gourmet/v1/")
     fun loadRepos(

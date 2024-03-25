@@ -1,5 +1,8 @@
 package com.example.restaurantfindkun.screen.component
 
+//
+//共通で使う変数
+//
 class CompanionObject {
     companion object {
         var shopID: String = "J001027771"

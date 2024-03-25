@@ -14,6 +14,9 @@ import com.example.restaurantfindkun.data.api.response.Shop
 import com.example.restaurantfindkun.screen.component.CardContent
 import com.example.restaurantfindkun.screen.component.CompanionObject
 
+//
+//検索結果画面
+//
 @Composable
 fun ResultScreen(
     viewModel: ResultViewModel = hiltViewModel(),

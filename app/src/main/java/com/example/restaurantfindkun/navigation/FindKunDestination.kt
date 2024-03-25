@@ -3,6 +3,9 @@ package com.example.restaurantfindkun.navigation
 import androidx.annotation.StringRes
 import com.example.restaurantfindkun.R
 
+//
+//NavHostで使う変数
+//
 sealed class FindKunDestination(
     var route: String,
     @StringRes val topBarTitle: Int?,

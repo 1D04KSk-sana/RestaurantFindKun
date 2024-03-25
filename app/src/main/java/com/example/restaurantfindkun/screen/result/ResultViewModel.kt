@@ -17,6 +17,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 import javax.inject.Inject
 
+//
+//検索結果画面
+//
 @HiltViewModel
 class ResultViewModel @Inject constructor() : BaseViewModel() {
     companion object {

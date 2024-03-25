@@ -8,6 +8,9 @@ import androidx.compose.ui.res.stringResource
 import com.example.restaurantfindkun.R
 import com.example.restaurantfindkun.ui.theme.Black
 
+//
+//共通：Messageダイアログ（エラーにより使っていない）
+//
 @Composable
 fun ShowDialog(onDismiss: () -> Unit) {
     AlertDialog(
