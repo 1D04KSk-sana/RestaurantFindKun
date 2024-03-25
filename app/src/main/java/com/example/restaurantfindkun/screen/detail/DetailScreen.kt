@@ -32,8 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.example.restaurantfindkun.navigation.FindKunDestination
-import com.example.restaurantfindkun.screen.FindKunApp
 import com.example.restaurantfindkun.screen.component.CardDetails
 import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.result.ResultViewModel

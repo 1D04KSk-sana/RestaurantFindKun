@@ -1,6 +1,5 @@
 package com.example.restaurantfindkun.screen.top
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,7 +42,8 @@ import com.example.restaurantfindkun.R
 import com.example.restaurantfindkun.screen.component.CheckBoxContent
 import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.component.DropDownMenuContent
-import com.example.restaurantfindkun.screen.component.ShowDialog
+import com.example.restaurantfindkun.ui.theme.Black
+import com.example.restaurantfindkun.ui.theme.SearchText
 
 //
 //メイン画面
@@ -60,9 +60,6 @@ fun TopScreen(
     val testItems = listOf("1", "2", "3", "4", "5")
     var selectedItem by remember { mutableStateOf(testItems.first()) }
 
-    // ShowDialog関数を呼び出すための状態
-    var showDialog by remember { mutableStateOf(false) }
-
     viewModel.getLocation(LocalContext.current)
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -78,8 +75,7 @@ fun TopScreen(
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
                 onSearchEvent = {
-                    if (!CompanionObject.checkedBoolean)
-                    {
+                    if (!CompanionObject.checkedBoolean) {
                         //
                         //エラー：MessageダイアログをAlertDialogを用いて表示しようと頑張ったけど
                         // @Composable invocations can only happen from the context of a @Composable function
@@ -93,6 +89,11 @@ fun TopScreen(
             CheckBoxContent(titleName = "現在位置からの範囲で検索する") { isChecked ->
                 CompanionObject.checkedBoolean = !CompanionObject.checkedBoolean
             }
+            Text(
+                text = "・現在位置からの検索範囲",
+                color = Black,
+                style = SearchText
+            )
             DropDownMenuContent(
                 modifier = Modifier,
                 items = testItems,

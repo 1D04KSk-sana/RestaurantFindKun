@@ -18,7 +18,7 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 import javax.inject.Inject
 
 @HiltViewModel
-class ResultViewModel @Inject constructor() : BaseViewModel()  {
+class ResultViewModel @Inject constructor() : BaseViewModel() {
     companion object {
         private const val TAG = "MainActivity"
         private const val BASE_URL = "https://webservice.recruit.co.jp/hotpepper/"
@@ -41,7 +41,7 @@ class ResultViewModel @Inject constructor() : BaseViewModel()  {
         range: String?
     ) {
         Log.d("Test result", CompanionObject.positionLatitude)
-        val call = service.loadRepos(BuildConfig.API_KEY, id,null, latitude, longitude, range)
+        val call = service.loadRepos(BuildConfig.API_KEY, id, null, latitude, longitude, range)
         val requestUrl = call.request().url.toString() // リクエストのURLを取得
 
         Log.d(TAG, "Request URL: $requestUrl") // リクエストのURLをログに表示

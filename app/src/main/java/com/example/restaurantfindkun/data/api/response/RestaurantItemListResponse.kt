@@ -1,6 +1,5 @@
 package com.example.restaurantfindkun.data.api.response
 
-import com.google.gson.annotations.SerializedName
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 

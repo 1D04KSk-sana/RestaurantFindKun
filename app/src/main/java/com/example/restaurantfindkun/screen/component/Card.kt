@@ -32,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.restaurantfindkun.ui.theme.Black
 import com.example.restaurantfindkun.ui.theme.Gray
-import com.example.restaurantfindkun.ui.theme.KariColor
 import com.example.restaurantfindkun.ui.theme.Pink
 import com.example.restaurantfindkun.ui.theme.StoreCatchText
 import com.example.restaurantfindkun.ui.theme.StoreNameText
@@ -94,7 +93,7 @@ fun CardContent(
                         modifier = Modifier
                             .size(25.dp)
                             .fillMaxSize(),
-                        imageVector =Icons.Default.FavoriteBorder,
+                        imageVector = Icons.Default.FavoriteBorder,
                         contentDescription = "お気に入りボタン（機能なし）",
                         tint = Black
                     )
@@ -116,6 +115,7 @@ fun CardContent(
     }
 }
 
+//レストラン詳細表示用
 @Composable
 fun CardDetails(
     okBoolean: Boolean,
