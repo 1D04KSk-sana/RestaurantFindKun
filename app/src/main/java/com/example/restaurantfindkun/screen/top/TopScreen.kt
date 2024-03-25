@@ -43,6 +43,7 @@ import com.example.restaurantfindkun.R
 import com.example.restaurantfindkun.screen.component.CheckBoxContent
 import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.component.DropDownMenuContent
+import com.example.restaurantfindkun.screen.component.ShowDialog
 
 //
 //メイン画面
@@ -54,11 +55,13 @@ fun TopScreen(
     moveNextScreen: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    var checkedBoolean = false
 
     //ComboBox（DropDownMenu）用の現在位置からの検索範囲データ
     val testItems = listOf("1", "2", "3", "4", "5")
     var selectedItem by remember { mutableStateOf(testItems.first()) }
+
+    // ShowDialog関数を呼び出すための状態
+    var showDialog by remember { mutableStateOf(false) }
 
     viewModel.getLocation(LocalContext.current)
 
@@ -75,12 +78,20 @@ fun TopScreen(
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
                 onSearchEvent = {
-                    moveNextScreen();
+                    if (!CompanionObject.checkedBoolean)
+                    {
+                        //
+                        //エラー：MessageダイアログをAlertDialogを用いて表示しようと頑張ったけど
+                        // @Composable invocations can only happen from the context of a @Composable function
+                        //のエラーが解決できず何もしない状態にしている
+                        //
+                    } else {
+                        moveNextScreen();
+                    }
                 }
             )
-            CheckBoxContent(titleName = "現在位置空の範囲で検索する") { isChecked ->
-                checkedBoolean = !checkedBoolean
-                Log.d("Test", checkedBoolean.toString())
+            CheckBoxContent(titleName = "現在位置からの範囲で検索する") { isChecked ->
+                CompanionObject.checkedBoolean = !CompanionObject.checkedBoolean
             }
             DropDownMenuContent(
                 modifier = Modifier,

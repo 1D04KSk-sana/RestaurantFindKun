@@ -23,11 +23,21 @@ fun ResultScreen(
 ) {
     val listApi by viewModel.apiList.collectAsStateWithLifecycle()
 
+    var tmpLatitude: String? = null
+    var tmpLongitude: String? = null
+    var tmpRange: String? = null
+
+    if (CompanionObject.checkedBoolean) {
+        tmpLatitude = CompanionObject.positionLatitude
+        tmpLongitude = CompanionObject.positionLongitude
+        tmpRange = CompanionObject.positionRange
+    }
+
     viewModel.executeReposLoad(
         id = null,
-        latitude = CompanionObject.positionLatitude,
-        longitude = CompanionObject.positionLongitude,
-        range = CompanionObject.positionRange
+        latitude = tmpLatitude,
+        longitude = tmpLongitude,
+        range = tmpRange
     )
 
     ListSet(
