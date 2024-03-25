@@ -1,19 +1,11 @@
 package com.example.restaurantfindkun.data.api.response
 
-import com.google.gson.annotations.SerializedName
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 
-data class RestaurantItem(
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("smallarea")
-    val smallArea: String,
-    @SerializedName("storecatch")
-    val storeCatch: String,
-    @SerializedName("image")
-    val image: String
-)
+//
+//APIで帰ってくるデータの入れる箱
+//
 
 @Root(name = "shop", strict = false)
 data class Shop(

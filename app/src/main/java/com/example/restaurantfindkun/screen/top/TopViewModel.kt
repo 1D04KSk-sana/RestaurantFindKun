@@ -17,6 +17,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+//
+//メイン画面
+//
 @HiltViewModel
 class TopViewModel @Inject constructor() : BaseViewModel() {
     private val _uiState = MutableStateFlow(UiState())
