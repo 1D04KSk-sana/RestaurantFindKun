@@ -20,6 +20,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.restaurantfindkun.ui.theme.SearchText
 
+//
+//共通：ドロップダウンメニュー
+//
 @Composable
 fun DropDownMenuContent(
     items: List<String>,
@@ -51,9 +54,9 @@ fun DropDownMenuContent(
             items.forEach { item ->
                 DropdownMenuItem(
                     onClick = {
-                    onItemSelected(item)
-                    expanded = false
-                },
+                        onItemSelected(item)
+                        expanded = false
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {

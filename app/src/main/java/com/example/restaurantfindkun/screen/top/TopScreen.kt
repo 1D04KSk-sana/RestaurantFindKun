@@ -1,6 +1,5 @@
 package com.example.restaurantfindkun.screen.top
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,13 +25,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,21 +40,27 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restaurantfindkun.R
 import com.example.restaurantfindkun.screen.component.CheckBoxContent
+import com.example.restaurantfindkun.screen.component.CompanionObject
 import com.example.restaurantfindkun.screen.component.DropDownMenuContent
+import com.example.restaurantfindkun.ui.theme.Black
+import com.example.restaurantfindkun.ui.theme.SearchText
 
 //
 //メイン画面
 //
 @Composable
 fun TopScreen(
-    viewModel: TopViewModel = hiltViewModel()
+    viewModel: TopViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
+    moveNextScreen: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    var checkedBoolean = false
 
-    //ComboBox（DropDownMenu）用のテストデータ
-    val testItems = listOf("1", "2", "3", "4")
+    //ComboBox（DropDownMenu）用の現在位置からの検索範囲データ
+    val testItems = listOf("1", "2", "3", "4", "5")
     var selectedItem by remember { mutableStateOf(testItems.first()) }
+
+    viewModel.getLocation(LocalContext.current)
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -69,18 +74,35 @@ fun TopScreen(
                     .padding(top = 12.dp, start = 16.dp, end = 16.dp),
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
-                onSearchEvent = { viewModel.executeReposLoad() }
+                onSearchEvent = {
+                    if (!CompanionObject.checkedBoolean) {
+                        //
+                        //エラー：MessageダイアログをAlertDialogを用いて表示しようと頑張ったけど
+                        // @Composable invocations can only happen from the context of a @Composable function
+                        //のエラーが解決できず何もしない状態にしている
+                        //
+                    } else {
+                        moveNextScreen();
+                    }
+                }
+            )
+            CheckBoxContent(titleName = "現在位置からの範囲で検索する") { isChecked ->
+                CompanionObject.checkedBoolean = !CompanionObject.checkedBoolean
+            }
+            Text(
+                text = "・現在位置からの検索範囲",
+                color = Black,
+                style = SearchText
             )
             DropDownMenuContent(
                 modifier = Modifier,
                 items = testItems,
                 selectedItem = selectedItem,
-                onItemSelected = { selectedItem = it }
+                onItemSelected = {
+                    selectedItem = it
+                    CompanionObject.positionRange = selectedItem
+                }
             )
-            CheckBoxContent(titleName = "ジャンル名") { isChecked ->
-                checkedBoolean = !checkedBoolean
-                Log.d("Test", checkedBoolean.toString())
-            }
         }
     }
 }

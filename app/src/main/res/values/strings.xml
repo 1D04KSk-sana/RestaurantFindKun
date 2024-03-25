@@ -8,6 +8,8 @@
 
     <!--  ページタイトル  -->
     <string name="restaurantFindKun">レストラン見つける君</string>
+    <string name="resultFindKum">レストラン結果君</string>
+    <string name="detailFindKum">レストラン詳細君</string>
 
     <!--  検索  -->
     <string name="searchBarText">条件を入力して検索してね</string>
@@ -17,4 +19,7 @@
     <!--  権限必要性説明  -->
     <string name="permission_explaination_title">権限が無いと以下の機能が制限されます</string>
     <string name="permission_explaination_message">・位置情報を用いた検索\n・仮テキスト</string>
+    <!--  検索条件未指定エラー  -->
+    <string name="error_search_title">検索条件エラー</string>
+    <string name="error_search_message">検索条件が未指定です</string>
 </resources>

@@ -20,9 +20,9 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.restaurantfindkun.ui.theme.Black
-import com.example.restaurantfindkun.ui.theme.SearchText
+import com.example.restaurantfindkun.ui.theme.Cream
 import com.example.restaurantfindkun.ui.theme.Gray
-import com.example.restaurantfindkun.ui.theme.KariColor
+import com.example.restaurantfindkun.ui.theme.SearchText
 
 //
 //共通：テキストフィールド
@@ -44,11 +44,11 @@ fun TextFieldContent(
                 shape = RoundedCornerShape(5.dp)
             ),
         verticalAlignment = Alignment.CenterVertically,
-        ) {
+    ) {
         BasicTextField(
             modifier = modifier
                 .background(
-                    color = KariColor,
+                    color = Cream,
                     shape = RoundedCornerShape(5.dp)
                 )
                 .padding(6.dp)

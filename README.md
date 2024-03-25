@@ -52,6 +52,21 @@
     - [x] APIのxml変換など
     - [x] APIの検索とそのデータの取得
     - ※感想：や～～っとできた！！特に正しいリクエストURLを作れずすごく手間取った。なのにできた私はすごい。天才
++ **3/22**
+    - ※感想：急用により作業できず
++ **3/23**
+    - [x] GithubからKeyの削除
+    - [x] リスト表示と詳細実装
+    - ※感想：Keyを表示しないことがうまくできずあっちゃこっちゃした。キャッシュを消すことを知れた。私はえらい。
++ **3/24**
+    - [x] 詳細画面用カード作成
+    - [x] 詳細画面実装
+    - ※感想：詳細画面一旦実装完了、時間があればもっと詰められそう……
++ **3/25**
+    - [x] 仕様書まとめコピー
+    - [x] コードリファクタ
+    - ※感想：進捗　書いてたのにコピペするの忘れてた。気づけてえらい。
+
 
 # **〇参考にしたサイト様**
 + **Image系**
@@ -71,6 +86,8 @@
         - https://stackoverflow.com/questions/67681416/jetpack-compose-decrease-height-of-textfield
     - チェックボックス
         - https://zenn.dev/joo_hashi/books/f646fb076f58dc/viewer/e6bc40
+    - Remember
+        - https://zenn.dev/kaleidot725/articles/2021-11-13-jc-remember-remembersaveable
 
 + **API系**
     - APIを隠す方法
@@ -97,6 +114,10 @@
         - https://androidstudio.hatenablog.com/entry/2014/07/25/134600
     - BuildConfig
         - https://takerpg.hatenablog.jp/entry/2023/04/22/210928
+
++ **Git系**
+    - mergeをロールバックする方法
+        - https://www.ipentec.com/document/git-rollback-push
 
 + **あああ**
     - アイコンの書き方
